@@ -1,0 +1,58 @@
+git 修改提交说明
+
+git commit --amend  修改最新一条
+
+git rebase -i <commit-id> 修改指定提交的说明
+
+
+git stash      保存更改
+git stash pop  恢复更改
+
+git reset --hard
+git clean -fdx
+
+
+设置别名
+git config --global alias.ct commit  （git commit 别名 git ct）
+git config --global alias.st commit  （git status 别名 git st）
+
+
+工作区、暂存区、版本库
+
+
+git diff          工作区和暂存区比较
+git diff --cached  暂存区个HEAD比较
+git diff HEAD     工作区和HEAD比较
+
+
+git checkout <file>  丢弃工作区的修改
+git reset HEAD <file> 把暂存区的修改回退上一次提交前的状态
+git reset --hard <commit-id> 版本回退, --hard 会破坏工作区未提交的改动
+
+git log
+git log --oneline
+git log --oneline | head -3
+git reflog show master | head -5
+
+git reset [--soft | --mixed | --hard] [<commit>]
+① 替换引用指向 引用执行新的commit ID
+② 替换暂存区 替换后，暂存区和引用指向的目录树内容相同
+③ 替换工作区 替换后，暂存区、工作区个引用指向的目录树内容相同
+
+--hard  执行①②③
+--mixed 执行①②
+--soft  执行①
+默认使用--mixed
+
+
+
+git checkout <branch> 切换分支
+git checkout <branch> --<filename> 拉取指定分支上的文件到现在分支，并添加到暂存区里
+git checkout [<commit>] --<filename> 从指定commit上检出文件到工作区和暂存区， 不指定coomit则暂存区文件替换工作区
+git checkout -b <local branch> origin/<remote branch> 拉取远程分支到本地
+
+git push origin <remote branch>:<local branch>
+
+
+git remote add origin https://github.com/w-rudolph/Angular4Demo.git
+git push -u origin master
